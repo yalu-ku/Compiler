@@ -13,14 +13,31 @@ void error() {
 }
 
 
-void pop_() {
-    if (ch == 'a' || 'b' || 'c') {
+void pop_a() {
+    if (ch == 'a') {
         ch = getchar();
     }
-    else
-        error();
+    else error();
 }
 
+void pop_b() {
+    if (ch == 'b') {
+        ch = getchar();
+    }
+    else error();
+}
+void pop_c() {
+    if (ch == 'c') {
+        ch = getchar();
+    }
+    else error();
+}
+void pop_d() {
+    if (ch == 'd') {
+        ch = getchar();
+    }
+    else error();
+}
 
 
 //1. S->aS
@@ -28,17 +45,19 @@ void pop_() {
 void expand_S() {
     void expand_A();
     if (ch == 'a') {
-        pop_();
+        pop_a();
         expand_S();
         cnt[i++] = 1;
     }
     else if (ch == 'b') {
-        pop_();
+        pop_b();
         expand_A();
         cnt[i++] = 2;
     }
     else
         error();
+
+    
 }
 
 
@@ -46,12 +65,12 @@ void expand_S() {
 //4. A -> ccA
 void expand_A() {
     if (ch == 'd') {
-        pop_();
+        pop_d();
         cnt[i++] = 3;
     }
     else if (ch == 'c') {
-        pop_();
-        pop_();
+        pop_c();
+        pop_c();
         expand_A();
         cnt[i++] = 4;
     }
